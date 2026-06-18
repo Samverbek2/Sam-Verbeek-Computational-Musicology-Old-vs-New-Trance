@@ -2,19 +2,16 @@ project:
   type: website
   output-dir: docs
 
-execute:
-  echo: false
-
 website:
   title: "Old vs New Trance Analysis"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - href: Track-level Features.qmd
-        text: Track-Level Features
-      - href: Chroma Features.qmd
-        text: Chroma Features
+      - href: Track-Level-Features.qmd
+        text: Track-Level-Features
+      - href: Chroma-Features.qmd
+        text: Chroma-Features
       - href: Clustering.qmd
         text: Clustering
       - href: Contribution.qmd

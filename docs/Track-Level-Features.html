@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Old vs New Trance Analysis</title>
+<title>Track-Level Features – Old vs New Trance Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -97,12 +132,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Track-level Features.qmd"> 
-<span class="menu-text">Track-Level Features</span></a>
+    <a class="nav-link active" href="./Track-Level-Features.html" aria-current="page"> 
+<span class="menu-text">Track-Level-Features</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Chroma Features.html"> 
-<span class="menu-text">Chroma Features</span></a>
+    <a class="nav-link" href="./Chroma-Features.html"> 
+<span class="menu-text">Chroma-Features</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Clustering.html"> 
@@ -131,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Track-Level Features</h1>
 </div>
 
 
@@ -148,12 +183,169 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.5.0 ──
+✔ broom        1.0.13     ✔ rsample      1.3.2 
+✔ dials        1.4.3      ✔ tailor       0.1.0 
+✔ infer        1.1.0      ✔ tune         2.1.0 
+✔ modeldata    1.5.1      ✔ workflows    1.3.0 
+✔ parsnip      1.6.0      ✔ workflowsets 1.1.1 
+✔ recipes      1.3.3      ✔ yardstick    1.4.0 
+── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdendro)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(heatmaply)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: plotly
+
+Attaching package: 'plotly'
+
+The following object is masked from 'package:ggplot2':
+
+    last_plot
+
+The following object is masked from 'package:stats':
+
+    filter
+
+The following object is masked from 'package:graphics':
+
+    layout
+
+Loading required package: viridis
+Loading required package: viridisLite
+
+Attaching package: 'viridis'
+
+The following object is masked from 'package:scales':
+
+    viridis_pal
+
+
+======================
+Welcome to heatmaply version 1.6.0
+
+Type citation('heatmaply') for how to cite the package.
+Type ?heatmaply for the main documentation.
+
+The github page is: https://github.com/talgalili/heatmaply/
+Please submit your suggestions and bug-reports at: https://github.com/talgalili/heatmaply/issues
+You may ask questions at stackoverflow, use the r and heatmaply tags: 
+     https://stackoverflow.com/questions/tagged/heatmaply
+======================</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Final_Corpus <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Downloads/Final_Corpus.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 62 Columns: 24
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (7): Track URI, Track Name, Album Name, Artist Name(s), Added By, Genr...
+dbl  (14): Duration (ms), Popularity, Danceability, Energy, Key, Loudness, M...
+lgl   (1): Explicit
+dttm  (1): Added At
+date  (1): Release Date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#seperate old trance and new trance</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Trance_Corpus <span class="ot">&lt;-</span> Final_Corpus <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Release Date</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(<span class="st">`</span><span class="at">Release Date</span><span class="st">`</span>, <span class="dv">1</span>, <span class="dv">4</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">ifelse</span>(<span class="st">`</span><span class="at">Release Date</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">2015</span>, <span class="st">"Old Trance"</span>, <span class="st">"New Trance"</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#seperate my own tracks from the old and new trance categories</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Trance_Corpus <span class="ot">&lt;-</span> Trance_Corpus <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">ifelse</span>(<span class="st">`</span><span class="at">Artist Name(s)</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Bekí"</span>, <span class="st">"Bekí"</span>, Category))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Trance_Corpus, <span class="fu">aes</span>(<span class="at">x =</span> Valence, <span class="at">y =</span> Energy, <span class="at">colour =</span> Category)) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">span =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Valence vs Energy in Trance: Old vs New vs Bekí"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Valence (Emotion)"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Energy (Intensity)"</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"Category"</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Track-Level-Features_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
+</div>
+<p>The relationship between valence (emotion) and energy shows clear differences between&nbsp; lassic and modern trance. Modern trance tracks are all grouped at very high energy levels, often close to the maximum, while also keeping relatively high valence. This suggests that modern trance focuses on a consistent, high-impact and euphoric sound, with not much variation in intensity throughout the track.&nbsp;</p>
+<p>Classic trance shows a much wider spread in both energy and valence. Even though many tracks are still energetic, there is more variation, including moments with lower energy and lower emotional intensity. This reflects how classic trance is built around progression and contrast, where tracks move between calm breakdowns and more energetic peaks.</p>
+<p>My own tracks are also high in energy, similar to modern trance, but they show slightly more variation in valence. This suggests that while they follow modern production styles in terms of intensity, they might still include some of the emotional variation that is more typical of classic trance.</p>
+<p>Overall, this visualization supports the idea that trance has changed over time, from a genre focused on emotional development and contrast to one that prioritizes constant energy and immediate impact.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Trance_Corpus, <span class="fu">aes</span>(<span class="at">x =</span> Category, <span class="at">y =</span> Loudness, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Loudness Distribution Across Categories"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Category"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Loudness (dB)"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Track-Level-Features_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Trance_Corpus, <span class="fu">aes</span>(<span class="at">x =</span> Category, <span class="at">y =</span> Tempo, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">130</span>, <span class="dv">155</span>)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Tempo Distribution in Trance"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Category"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Tempo (BPM)"</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Track-Level-Features_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The loudness distribution shows a clear difference between classic trance, modern trance, and my own productions (Bekí). Modern trance tracks are generally the loudest, with values around -6 dB. This means that the sound is very intense and consistent throughout the track. This fits with current production styles, where tracks are heavily compressed to sound as powerful as possible, especially in club settings where loudness and impact are important.</p>
+<p>Classic trance, on the other hand, shows a wider spread in loudness and is overall a bit quieter. There are also some lower outliers, which suggests that these tracks have more variation in volume. This makes sense musically, because older trance often builds up from quieter breakdowns to louder drops, creating a stronger sense of contrast which results in a more emotional feeling.</p>
+<p>My own tracks fall somewhere in between, but they are closer to modern trance. The loudness is quite consistent, which shows that I focus on keeping the energy level high throughout the track. However, they are slightly less extreme than modern trance tracks, which suggests that I still leave some room for variation in dynamics.</p>
+<p>The tempo distribution shows another clear difference between the two styles. Classic trance tracks are mostly between 130 and 140 BPM, which gives them a more steady and flowing feel. This slower tempo works well with the longer melodies and gradual build-ups that are typical for older trance.</p>
+<p>Modern trance, in contrast, is much faster, usually between 145 and 155 BPM. This higher tempo creates a more driving and energetic feeling, which fits with the more intense and club-focused style of the genre today.</p>
+<p>My own productions are also on the higher end of the tempo range, which places them close to modern trance. This shows that my tracks follow current trends, especially in terms of energy and how they are designed for the&nbsp;dancefloor.</p>
 
 
 
