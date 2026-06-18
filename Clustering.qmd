@@ -1,0 +1,68 @@
+---
+title: "Clustering"
+---
+
+```{r}
+library(tidyverse)
+library(tibble)
+library(ggplot2)
+library(tidymodels)
+library(ggdendro)
+library(heatmaply)
+
+Final_Corpus <- read_csv("~/Downloads/Final_Corpus.csv")
+
+#seperate old trance and new trance
+Trance_Corpus <- Final_Corpus %>%
+  mutate(`Release Date` = as.numeric(substr(`Release Date`, 1, 4))) %>%
+  mutate(Category = ifelse(`Release Date` < 2015, "Old Trance", "New Trance"))
+
+#seperate my own tracks from the old and new trance categories
+Trance_Corpus <- Trance_Corpus %>%
+  mutate(Category = ifelse(`Artist Name(s)` == "Bekí", "Bekí", Category))
+
+Trance_juice <-
+  recipe(
+    `Track Name` ~
+      Danceability +
+      Energy +
+      Loudness +
+      Speechiness +
+      Acousticness +
+      Instrumentalness +
+      Liveness +
+      Valence +
+      Tempo +
+      `Duration (ms)`,
+    data = Final_Corpus
+  ) |>
+  step_center(all_predictors()) |>
+  step_scale(all_predictors()) |> 
+  # step_range(all_predictors()) |> 
+  prep(Final_Corpus |> mutate(`Track Name` = str_trunc(`Track Name`, 36))) |>
+  juice() |>
+  column_to_rownames("Track Name")
+
+Trance_dist <- dist(Trance_juice, method = "euclidean")
+
+Trance_dist |> 
+  hclust(method = "single") |> # Try single, average, and complete.
+  dendro_data() |>
+  ggdendrogram()
+
+heatmaply(
+  Trance_juice,
+  hclustfun = hclust,
+  hclust_method = "average",  # Change for single, average, or complete linkage.
+  dist_method = "euclidean")
+```
+
+To further analyse the differences between tracks, I created a hierarchical clustering and a heatmap based on audio features that are relevant to dance music like danceability, energy, valence, tempo and loudness. These visualisations help to group tracks together based on similarity and show how these features contribute to those groupings.
+
+Starting with the heatmap, each row represents a track and each column represents one of the selected audio features (such as energy, loudness, tempo, etc.). The colours indicate the magnitude of each feature, where brighter colours represent higher values and darker colours represent lower values. One clear observation is that tracks with similar colour patterns tend to appear next to each other. This means that these tracks share similar audio characteristics. For example, some tracks show consistently high energy and loudness values, which likely places them in the modern trance category, while others have more variation or lower values, which may correspond to classic trance tracks. 
+
+The clustering applied to the heatmap further reinforces this. You can see that the tracks are not randomly ordered but grouped into clusters, where each cluster represents tracks that are more similar to each other than to the rest of the dataset. This suggests that the selected features are effective in capturing meaningful differences between tracks. 
+
+Looking at the hierarchical clustering (dendrogram), the structure shows how tracks are grouped step by step based on their similarity. Tracks that are connected at lower distances (lower on the tree) are more similar, while tracks that only connect higher up are more different. There are a few clear clusters visible, where groups of tracks branch off together. These clusters likely represent different styles or production approaches within the dataset, but unfortunately this dendogram is not very helpful for my research. There are no clear visible clusters between the old trance and the modern trance.
+
+Overall, the clustering results support the earlier findings from loudness, tempo, chroma, and timbre analysis. Tracks that follow modern trance conventions (higher loudness, higher tempo, more consistent energy) tend to group together, while classic trance tracks also form separate clusters due to their lower tempo and more dynamic structure. This shows that the chosen features successfully capture stylistic differences in the dataset and can be used to distinguish between different types of trance music.

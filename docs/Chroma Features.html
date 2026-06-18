@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sam Verbeek, Computational Musicology, Old Trance vs New Trance – Old vs New Trance Analysis</title>
+<title>Chroma Features – Old vs New Trance Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -93,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Track-Level Features</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Chroma Features.html"> 
+    <a class="nav-link active" href="./Chroma Features.html" aria-current="page"> 
 <span class="menu-text">Chroma Features</span></a>
   </li>  
   <li class="nav-item">
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sam Verbeek, Computational Musicology, Old Trance vs New Trance</h1>
+<h1 class="title">Chroma Features</h1>
 </div>
 
 
@@ -235,16 +235,111 @@ dttm  (1): Added At
 date  (1): Release Date
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Using GitHub PAT from the git credential store.
+
+Skipping install of 'compmus' from a github remote, the SHA1 (11f4fe28) has not changed since last install.
+  Use `force = TRUE` to force installation
+
+Rows: 4773 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (13): TIME, A, Bb, B, C, C#, D, Eb, E, F, F#, G, Ab
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chroma-Features_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>#How has the sound of trance music evolved from the early 2000’s to modern day trance in terms of audio-features and where does my sound fit in?</p>
-<p>##Background</p>
-<p>Trance music is a subgenre of electronic dance music that emerged in the late 1980s and gained major popularity throughout the 1990s and early 2000s. It is typically characterized by a fast tempo (often around 125–150 BPM), repeating melodic phrases, and a strong focus on building emotional intensity through gradual layering and breakdowns. Rather than relying on lyrical content, trance often emphasizes atmosphere and progression, aiming to create a hypnotic or “immersive” listening experience.</p>
-<p>###Corpus</p>
-<p>For this project, I created a dataset of 62 trance tracks divided into two equal groups: classic trance and modern trance. The classic tracks mainly come from the late 1990s and early 2000s, while the modern tracks represent more recent releases. My track selection of the classic trance was based on spotify playlists with names like “trance hits” or “top 100 trance” which were made before 2013. My track selection of the modern trance was based on my own knowledge of songs, because I am really invested in this part of the genre. I chose these two categories to explore how the trance genre has changed over time, especially in terms of sound, structure, and production style. The classic trance tracks were selected because they are known for their melodic focus, longer breakdowns, and more gradual build-ups. On the other hand, modern trance tracks tend to be faster, louder, and more focused on maintaining a high level of energy throughout the track. By comparing these two groups, I aimed to identify clear differences between older and newer production approaches. In addition to these tracks, I also included a small number of my own productions (Bekí). These tracks were produced using a digital audio workstation, where I created the sounds using synthesizers and arranged them into full tracks. They are mainly influenced by modern trance, but also include some elements of classic trance, such as melodic progression. The purpose of including my own tracks is not to analyse them separately, but to see where they fit within the broader trance genre. This helps to connect the analytical part of the project to my own production practice.<br>
-<br>
-</p>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 5675 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (13): TIME, A, Bb, B, C, C#, D, Eb, E, F, F#, G, Ab
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chroma-Features_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To analyse the differences between classic and modern trance, I created chromagrams for two versions of the same track: “Instant Moments”. The original version by R.O.O.S and a modern remake by Divasi. Because both tracks are based on the same musical idea, this makes it easier to clearly see how the genre has changed over time.</p>
+<p>In the chromagram of the original R.O.O.S track, there are clear horizontal bands across several pitch classes. This means that certain notes stay active for longer periods of time. These sustained patterns are typical for chords, pads, and arpeggios, which are key elements in classic trance. The result is a smooth and continuous harmonic structure, where the music gradually evolves and creates an emotional progression, especially in breakdown sections.</p>
+<p>In contrast, the chromagram of the Divasi remake looks much more fragmented. Instead of long horizontal lines, there are many short vertical patterns, which show that the pitch content is changing more quickly. This suggests that the sounds are shorter and more rhythmically driven, like stabs or repeating synth patterns. Rather than focusing on long chord progressions, the modern version uses pitch more as a rhythmic tool that supports the energy of the track.</p>
+<p>Another noticeable difference is that the modern chromagram looks more “busy” and less smooth overall. This reflects how modern trance often focuses on maintaining high energy and drive throughout the track, instead of building long emotional transitions like older trance does.</p>
+<p>Overall, the comparison shows a clear shift in how pitch is used in trance music. Classic trance focuses more on harmony and melodic development, while modern trance puts more emphasis on rhythm, repetition, and intensity. Even though both tracks share the same core idea, the chromagrams show how differently that idea is expressed depending on the style and era.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 14718 Columns: 22
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (22): TIME, BIN 1, BIN 2, BIN 3, BIN 4, BIN 5, BIN 6, BIN 7, BIN 8, BIN ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chroma-Features_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `by = character()` to perform a cross join was deprecated in dplyr 1.1.0.
+ℹ Please use `cross_join()` instead.
+ℹ The deprecated feature was likely used in the compmus package.
+  Please report the issue to the authors.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chroma-Features_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To analyse timbre and structure, I created cepstrograms and self-similarity matrices (SSM) for both a modern trance track and a classic trance track. These visualisations show how the sound of a track develops over time and how different sections are related.</p>
+<p>Starting with the modern trance track, the cepstrogram (Pegassi – Spectral Bells) shows a fairly consistent pattern, with most of the activity concentrated in the lower MFCC components. These lower components represent the main characteristics of the sound, such as brightness and bass content. The horizontal bands indicate that the overall timbre remains relatively stable throughout the track, meaning that the same types of sounds and synths are used consistently. However, there are also noticeable changes at specific moments in time, which likely correspond to drops, build-ups, and breakdowns. This suggests that changes in timbre happen in clearly defined sections rather than gradually over time.</p>
+<p>The self-similarity matrix of the modern trance track (Pegassi – Spectral Bells) supports this. It shows a clear grid-like structure with repeating blocks. These blocks indicate that certain sections of the track are very similar to each other, meaning that musical elements such as rhythms, sounds, or patterns are reused. The strong vertical and horizontal lines suggest a structured arrangement with clearly separated sections, which is typical for modern trance where repetition and energy are important.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 21805 Columns: 22
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (22): TIME, BIN 1, BIN 2, BIN 3, BIN 4, BIN 5, BIN 6, BIN 7, BIN 8, BIN ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chroma-Features_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chroma-Features_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at the classic trance track (Anjunabeats – Alt+F4), the cepstrogram shows a smoother and more gradual pattern over time. The horizontal bands are still present, but they appear more continuous, with fewer abrupt changes. This indicates that the timbre develops more slowly, with sounds evolving over longer periods instead of switching quickly between different sections. This reflects the use of sustained pads and layered synths, which are common in classic trance and contribute to a more flowing sound.</p>
+<p>The self-similarity matrix of the classic trance track (Anjunabeats - Alt+F4) also shows repeating sections, but the structure appears more continuous. Instead of very clear and separate blocks, the patterns seem to blend more into each other, suggesting smoother transitions between different parts of the track. This indicates that the track is built more around gradual development rather than clearly separated sections.&nbsp;</p>
+<p>Comparing the two, a clear difference can be seen in both timbre and structure. The modern trance track is more structured and repetitive, with clearly defined sections and consistent sound design. In contrast, the classic trance track develops more gradually, both in terms of timbre and structure, creating a more continuous and evolving listening experience. This shows that modern trance focuses more on maintaining energy through repetition and structure, while classic trance places more emphasis on progression and gradual change.</p>
 
 
 

@@ -1,0 +1,15 @@
+---
+title: "Contribution"
+---
+
+Through this set of analyses, I have gained a much clearer understanding of how different musical features define and separate styles within trance music. By looking at loudness, tempo, chroma, timbre, and clustering, it became clear that the differences between classic and modern trance are not just subjective, but can actually be measured and visualised. 
+
+One of the main things I learned is how strongly modern trance is characterised by consistency and intensity. Features such as loudness and tempo showed that modern tracks are generally louder and faster, which creates a more energetic and club-focused sound. This was also visible in the timbre analysis, where the cepstrograms showed more stable and consistent sound characteristics over time, and in the self-similarity matrices, where clear and repetitive structures appeared. In contrast, classic trance showed more variation, both in loudness and timbre, with smoother transitions and more gradual development. This reflects a more melodic and evolving approach to production. 
+
+Another important insight is how these different features work together. For example, higher tempo, higher loudness, and consistent timbre all contribute to the overall intensity of modern trance. Meanwhile, variation in these features contributes to the more emotional and progressive feel of classic trance. The clustering analysis confirmed this by grouping tracks with similar characteristics together, showing that these features are effective in distinguishing between different styles. 
+
+In relation to my own productions, I learned that my tracks align closely with modern trance in terms of tempo, loudness, and overall structure. However, they still retain some level of variation, which suggests that I am combining elements of both modern and classic styles. This is useful for understanding my own artistic direction and where my music sits within the broader genre. 
+
+These conclusions could be useful for several groups. For music producers, this kind of analysis can help guide production decisions by showing how specific features contribute to a certain style or sound. For example, if a producer wants to create a modern trance track, they can focus on higher tempo, higher loudness, and more consistent timbre. For music analysts or researchers, these methods provide a way to objectively compare genres and track how they evolve over time. Finally, for platforms like Spotify or other recommendation systems, these kinds of features can improve how music is categorised and suggested to listeners, leading to more accurate and personalised recommendations. 
+
+Overall, this project shows that audio features are a powerful way to understand music on a deeper level, and that data analysis can reveal patterns that might not be immediately obvious just by listening.

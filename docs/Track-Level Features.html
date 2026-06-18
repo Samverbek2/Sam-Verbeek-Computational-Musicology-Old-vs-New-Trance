@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sam Verbeek, Computational Musicology, Old Trance vs New Trance – Old vs New Trance Analysis</title>
+<title>Track-Level Features – Old vs New Trance Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -93,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sam Verbeek, Computational Musicology, Old Trance vs New Trance</h1>
+<h1 class="title">Track-Level Features</h1>
 </div>
 
 
@@ -235,16 +235,43 @@ dttm  (1): Added At
 date  (1): Release Date
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Track-Level-Features_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>#How has the sound of trance music evolved from the early 2000’s to modern day trance in terms of audio-features and where does my sound fit in?</p>
-<p>##Background</p>
-<p>Trance music is a subgenre of electronic dance music that emerged in the late 1980s and gained major popularity throughout the 1990s and early 2000s. It is typically characterized by a fast tempo (often around 125–150 BPM), repeating melodic phrases, and a strong focus on building emotional intensity through gradual layering and breakdowns. Rather than relying on lyrical content, trance often emphasizes atmosphere and progression, aiming to create a hypnotic or “immersive” listening experience.</p>
-<p>###Corpus</p>
-<p>For this project, I created a dataset of 62 trance tracks divided into two equal groups: classic trance and modern trance. The classic tracks mainly come from the late 1990s and early 2000s, while the modern tracks represent more recent releases. My track selection of the classic trance was based on spotify playlists with names like “trance hits” or “top 100 trance” which were made before 2013. My track selection of the modern trance was based on my own knowledge of songs, because I am really invested in this part of the genre. I chose these two categories to explore how the trance genre has changed over time, especially in terms of sound, structure, and production style. The classic trance tracks were selected because they are known for their melodic focus, longer breakdowns, and more gradual build-ups. On the other hand, modern trance tracks tend to be faster, louder, and more focused on maintaining a high level of energy throughout the track. By comparing these two groups, I aimed to identify clear differences between older and newer production approaches. In addition to these tracks, I also included a small number of my own productions (Bekí). These tracks were produced using a digital audio workstation, where I created the sounds using synthesizers and arranged them into full tracks. They are mainly influenced by modern trance, but also include some elements of classic trance, such as melodic progression. The purpose of including my own tracks is not to analyse them separately, but to see where they fit within the broader trance genre. This helps to connect the analytical part of the project to my own production practice.<br>
-<br>
-</p>
+</div>
+<p>The relationship between valence (emotion) and energy shows clear differences between&nbsp; lassic and modern trance. Modern trance tracks are all grouped at very high energy levels, often close to the maximum, while also keeping relatively high valence. This suggests that modern trance focuses on a consistent, high-impact and euphoric sound, with not much variation in intensity throughout the track.&nbsp;</p>
+<p>Classic trance shows a much wider spread in both energy and valence. Even though many tracks are still energetic, there is more variation, including moments with lower energy and lower emotional intensity. This reflects how classic trance is built around progression and contrast, where tracks move between calm breakdowns and more energetic peaks.</p>
+<p>My own tracks are also high in energy, similar to modern trance, but they show slightly more variation in valence. This suggests that while they follow modern production styles in terms of intensity, they might still include some of the emotional variation that is more typical of classic trance.</p>
+<p>Overall, this visualization supports the idea that trance has changed over time, from a genre focused on emotional development and contrast to one that prioritizes constant energy and immediate impact.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Track-Level-Features_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Track-Level-Features_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The loudness distribution shows a clear difference between classic trance, modern trance, and my own productions (Bekí). Modern trance tracks are generally the loudest, with values around -6 dB. This means that the sound is very intense and consistent throughout the track. This fits with current production styles, where tracks are heavily compressed to sound as powerful as possible, especially in club settings where loudness and impact are important.</p>
+<p>Classic trance, on the other hand, shows a wider spread in loudness and is overall a bit quieter. There are also some lower outliers, which suggests that these tracks have more variation in volume. This makes sense musically, because older trance often builds up from quieter breakdowns to louder drops, creating a stronger sense of contrast which results in a more emotional feeling.</p>
+<p>My own tracks fall somewhere in between, but they are closer to modern trance. The loudness is quite consistent, which shows that I focus on keeping the energy level high throughout the track. However, they are slightly less extreme than modern trance tracks, which suggests that I still leave some room for variation in dynamics.</p>
+<p>The tempo distribution shows another clear difference between the two styles. Classic trance tracks are mostly between 130 and 140 BPM, which gives them a more steady and flowing feel. This slower tempo works well with the longer melodies and gradual build-ups that are typical for older trance.</p>
+<p>Modern trance, in contrast, is much faster, usually between 145 and 155 BPM. This higher tempo creates a more driving and energetic feeling, which fits with the more intense and club-focused style of the genre today.</p>
+<p>My own productions are also on the higher end of the tempo range, which places them close to modern trance. This shows that my tracks follow current trends, especially in terms of energy and how they are designed for the&nbsp;dancefloor.</p>
 
 
 

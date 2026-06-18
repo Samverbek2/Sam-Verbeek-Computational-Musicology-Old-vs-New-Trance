@@ -1,0 +1,77 @@
+---
+title: "Track-Level Features"
+---
+
+```{r}
+library(tidyverse)
+library(tibble)
+library(ggplot2)
+library(tidymodels)
+library(ggdendro)
+library(heatmaply)
+
+Final_Corpus <- read_csv("~/Downloads/Final_Corpus.csv")
+
+#seperate old trance and new trance
+Trance_Corpus <- Final_Corpus %>%
+  mutate(`Release Date` = as.numeric(substr(`Release Date`, 1, 4))) %>%
+  mutate(Category = ifelse(`Release Date` < 2015, "Old Trance", "New Trance"))
+
+#seperate my own tracks from the old and new trance categories
+Trance_Corpus <- Trance_Corpus %>%
+  mutate(Category = ifelse(`Artist Name(s)` == "Bekí", "Bekí", Category))
+
+ggplot(Trance_Corpus, aes(x = Valence, y = Energy, colour = Category)) +
+  geom_point(alpha = 0.7, size = 2) +
+  geom_smooth(se = FALSE, span = 1) +
+  labs(
+    title = "Valence vs Energy in Trance: Old vs New vs Bekí",
+    x = "Valence (Emotion)",
+    y = "Energy (Intensity)",
+    colour = "Category"
+  ) +
+  theme_minimal()
+```
+
+The relationship between valence (emotion) and energy shows clear differences between  lassic and modern trance. Modern trance tracks are all grouped at very high energy levels, often close to the maximum, while also keeping relatively high valence. This suggests that modern trance focuses on a consistent, high-impact and euphoric sound, with not much variation in intensity throughout the track. 
+
+Classic trance shows a much wider spread in both energy and valence. Even though many tracks are still energetic, there is more variation, including moments with lower energy and lower emotional intensity. This reflects how classic trance is built around progression and contrast, where tracks move between calm breakdowns and more energetic peaks.
+
+My own tracks are also high in energy, similar to modern trance, but they show slightly more variation in valence. This suggests that while they follow modern production styles in terms of intensity, they might still include some of the emotional variation that is more typical of classic trance.
+
+Overall, this visualization supports the idea that trance has changed over time, from a genre focused on emotional development and contrast to one that prioritizes constant energy and immediate impact.
+
+```{r}
+ggplot(Trance_Corpus, aes(x = Category, y = Loudness, fill = Category)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Loudness Distribution Across Categories",
+    x = "Category",
+    y = "Loudness (dB)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+ggplot(Trance_Corpus, aes(x = Category, y = Tempo, fill = Category)) +
+  geom_boxplot(alpha = 0.7) +
+  coord_cartesian(ylim = c(130, 155)) +
+  labs(
+    title = "Tempo Distribution in Trance",
+    x = "Category",
+    y = "Tempo (BPM)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+The loudness distribution shows a clear difference between classic trance, modern trance, and my own productions (Bekí). Modern trance tracks are generally the loudest, with values around -6 dB. This means that the sound is very intense and consistent throughout the track. This fits with current production styles, where tracks are heavily compressed to sound as powerful as possible, especially in club settings where loudness and impact are important.
+
+Classic trance, on the other hand, shows a wider spread in loudness and is overall a bit quieter. There are also some lower outliers, which suggests that these tracks have more variation in volume. This makes sense musically, because older trance often builds up from quieter breakdowns to louder drops, creating a stronger sense of contrast which results in a more emotional feeling.
+
+My own tracks fall somewhere in between, but they are closer to modern trance. The loudness is quite consistent, which shows that I focus on keeping the energy level high throughout the track. However, they are slightly less extreme than modern trance tracks, which suggests that I still leave some room for variation in dynamics.
+
+The tempo distribution shows another clear difference between the two styles. Classic trance tracks are mostly between 130 and 140 BPM, which gives them a more steady and flowing feel. This slower tempo works well with the longer melodies and gradual build-ups that are typical for older trance.
+
+Modern trance, in contrast, is much faster, usually between 145 and 155 BPM. This higher tempo creates a more driving and energetic feeling, which fits with the more intense and club-focused style of the genre today.
+
+My own productions are also on the higher end of the tempo range, which places them close to modern trance. This shows that my tracks follow current trends, especially in terms of energy and how they are designed for the dancefloor.
